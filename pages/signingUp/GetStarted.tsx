@@ -1,5 +1,6 @@
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -35,39 +36,43 @@ const GetStarted = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'column', alignItems: 'center'}}>
-        <Text style={styles.title}>Let's get started</Text>
-        <Text
-          style={{
-            textAlign: 'center',
-            color: 'black',
-            paddingHorizontal: 30,
-            marginVertical: 10,
-            fontSize: 16,
-          }}>
-          The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-          below for those interested.
-        </Text>
-        <Image source={image} />
-        <Text
-          style={{
-            textAlign: 'center',
-            color: 'black',
-            paddingHorizontal: 30,
-            marginVertical: 10,
-            fontSize: 16,
-          }}>
-          Sculpt your ideal body, free your true self, transform your life.
-        </Text>
-      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{marginBottom: 20}}>
+        <View style={{flexDirection: 'column', alignItems: 'center'}}>
+          <Text style={styles.title}>Let's get started</Text>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: 'black',
+              paddingHorizontal: 30,
+              marginVertical: 10,
+              fontSize: 16,
+            }}>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+            below for those interested.
+          </Text>
+          <Image source={image} />
+          <Text
+            style={{
+              textAlign: 'center',
+              color: 'black',
+              paddingHorizontal: 30,
+              marginVertical: 10,
+              fontSize: 16,
+            }}>
+            Sculpt your ideal body, free your true self, transform your life.
+          </Text>
+        </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate('Goal');
-        }}>
-        <Text style={styles.buttonText}>GET STARTED</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('Goal');
+          }}>
+          <Text style={styles.buttonText}>GET STARTED</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
@@ -80,6 +85,7 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    backgroundColor: 'white',
   },
   subcontainer: {
     flex: 1,

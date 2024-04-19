@@ -112,7 +112,7 @@ const GoalHeight = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('TabNavigator');
+          navigation.navigate('FirstForm');
         }}>
         <Text style={styles.buttonText}>Next Step</Text>
       </TouchableOpacity>

@@ -48,6 +48,10 @@ import Fitness from './pages/Fitness';
 import GetStarted from './pages/signingUp/GetStarted';
 import Goal from './pages/signingUp/Goal';
 import FirstForm from './pages/signingUp/FirstForm';
+import Subscription from './pages/Subscription';
+import PaymentMethod from './pages/payment/PaymentMethod';
+import PaymentOtp from './pages/payment/PaymentOtp';
+import PaymentSuccess from './pages/payment/PaymentSuccess';
 
 const Stack = createNativeStackNavigator();
 
@@ -81,11 +85,16 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Meditation" component={Meditation} />
         <Stack.Screen name="Education" component={Education} />
         <Stack.Screen name="Nutrition" component={Nutrition} />
+        <Stack.Screen name="Subscription" component={Subscription} />
 
         <Stack.Screen name="Services" component={Services} />
         <Stack.Screen name="Consultant" component={Consultant} />
         <Stack.Screen name="Supplement" component={Supplement} />
         <Stack.Screen name="Fitness" component={Fitness} />
+
+        <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
+        <Stack.Screen name="PaymentOtp" component={PaymentOtp} />
+        <Stack.Screen name="PaymentSuccess" component={PaymentSuccess} />
       </Stack.Navigator>
     </NavigationContainer>
   );

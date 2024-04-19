@@ -195,7 +195,11 @@ const Cart = () => {
             <Text style={{color: 'black'}}>INR 1800</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('PaymentMethod');
+          }}>
           <Text style={styles.buttonText}>CHECKOUT</Text>
         </TouchableOpacity>
       </ScrollView>

@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '60%',
     color: 'black',
+    marginBottom: 20,
   },
   label: {
     marginBottom: 5,

@@ -110,9 +110,7 @@ const Success = [
 const Home = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={{width: '100%', backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
         style={{
           // backgroundColor: 'red',
@@ -120,7 +118,7 @@ const Home = () => {
           paddingHorizontal: 10,
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginTop: 10,
+          marginVertical: 10,
         }}>
         <Icons.Entypo name="dots-three-vertical" size={20} color={'black'} />
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
@@ -132,280 +130,290 @@ const Home = () => {
           />
         </View>
       </View>
-      <View style={styles.heroContainer}>
-        <View style={{width: '60%'}}>
-          <Text style={{fontWeight: '600', color: 'black', fontSize: 18}}>
-            Full Body Workout Training
-          </Text>
-          <Text style={{color: 'black', marginTop: 5}}>
-            Lorem ipsum dolor sit amet consectetur
-          </Text>
-        </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{width: '100%', backgroundColor: 'white'}}>
+        <View style={styles.heroContainer}>
+          <View style={{width: '60%'}}>
+            <Text style={{fontWeight: '600', color: 'black', fontSize: 18}}>
+              Full Body Workout Training
+            </Text>
+            <Text style={{color: 'black', marginTop: 5}}>
+              Lorem ipsum dolor sit amet consectetur
+            </Text>
+          </View>
 
-        <LinearGradient // Add LinearGradient component
-          colors={['transparent', '#FFA800']} // Gradient colors
-          locations={[0.6, 1]} // Gradient locations
-          start={{x: 0, y: 0.5}} // Start point (left)
-          end={{x: 1, y: 0.5}} // End point (right)
-          style={styles.gradient}
-        />
-        <View // Move the Image inside LinearGradient to ensure it's on top
-          style={{
-            position: 'absolute',
-            top: '-36%',
-            right: 0,
-            paddingRight: 5,
-          }}>
-          <Image source={heroImage} />
-        </View>
-      </View>
-
-      <View style={styles.categoryContainer}>
-        <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
-          Categories
-        </Text>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
-            flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'space-between',
-            // paddingLeft: 10,
-            marginTop: 20,
-            // backgroundColor: 'red',
-          }}>
-          {Categories.map((category, index) => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate(`${category.link}`);
-              }}
-              key={index}
-              style={{width: '30%', alignItems: 'center'}}>
-              <Image source={category.image} />
-              <Text style={{color: 'black', fontSize: 15, fontWeight: '800'}}>
-                {category.title}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
-      {/* Inner peace */}
-      <View style={styles.categoryContainer}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
-            INNERPEACE
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={{fontSize: 16, color: '#FFA800'}}>View All</Text>
-            <MaterialIcons name="navigate-next" size={25} color={'#FFA800'} />
+          <LinearGradient // Add LinearGradient component
+            colors={['transparent', '#FFA800']} // Gradient colors
+            locations={[0.6, 1]} // Gradient locations
+            start={{x: 0, y: 0.5}} // Start point (left)
+            end={{x: 1, y: 0.5}} // End point (right)
+            style={styles.gradient}
+          />
+          <View // Move the Image inside LinearGradient to ensure it's on top
+            style={{
+              position: 'absolute',
+              top: '-36%',
+              right: 0,
+              paddingRight: 5,
+            }}>
+            <Image source={heroImage} />
           </View>
         </View>
 
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
-            flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'space-between',
-            // paddingLeft: 10,
-            marginTop: 20,
-            // backgroundColor: 'red',
-            marginBottom: 20,
-          }}>
-          {Innerpeace.map((item, index) => (
-            <View
-              key={index}
-              style={{
-                width: '100%',
-                flexDirection: 'row',
-                justifyContent: '',
-                backgroundColor: '#ffe6c6',
-                borderRadius: 12,
-                // padding: 10,
-              }}>
-              <View style={{padding: 20}}>
-                <Text style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
-                  {item.name}
+        <View style={styles.categoryContainer}>
+          <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
+            Categories
+          </Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 10,
+              flexWrap: 'wrap',
+              width: '100%',
+              justifyContent: 'space-between',
+              // paddingLeft: 10,
+              marginTop: 20,
+              // backgroundColor: 'red',
+            }}>
+            {Categories.map((category, index) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate(`${category.link}`);
+                }}
+                key={index}
+                style={{width: '30%', alignItems: 'center'}}>
+                <Image source={category.image} />
+                <Text style={{color: 'black', fontSize: 15, fontWeight: '800'}}>
+                  {category.title}
                 </Text>
-                <Text style={{color: 'black'}}>
-                  {item.excerise} Exercises | {item.time} minutes{' '}
-                </Text>
-                <View style={{flexDirection: 'row', gap: 10, marginTop: 15}}>
-                  <TouchableOpacity
-                    style={{
-                      backgroundColor: 'white',
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                      borderRadius: 15,
-                    }}
-                    onPress={() => {
-                      navigation.navigate(`${item.name}`);
-                    }}>
-                    <Text style={{color: '#FFA800'}}>watch now</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      backgroundColor: 'white',
-                      paddingHorizontal: 10,
-                      paddingVertical: 5,
-                      borderRadius: 15,
-                    }}>
-                    <Text style={{color: '#FFA800'}}>subscribe</Text>
-                  </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+        {/* Inner peace */}
+        <View style={styles.categoryContainer}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
+              INNERPEACE
+            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{fontSize: 16, color: '#FFA800'}}>View All</Text>
+              <MaterialIcons name="navigate-next" size={25} color={'#FFA800'} />
+            </View>
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 10,
+              flexWrap: 'wrap',
+              width: '100%',
+              justifyContent: 'space-between',
+              // paddingLeft: 10,
+              marginTop: 20,
+              // backgroundColor: 'red',
+              marginBottom: 20,
+            }}>
+            {Innerpeace.map((item, index) => (
+              <View
+                key={index}
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: '',
+                  backgroundColor: '#ffe6c6',
+                  borderRadius: 12,
+                  // padding: 10,
+                }}>
+                <View style={{padding: 20}}>
+                  <Text
+                    style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
+                    {item.name}
+                  </Text>
+                  <Text style={{color: 'black'}}>
+                    {item.excerise} Exercises | {item.time} minutes{' '}
+                  </Text>
+                  <View style={{flexDirection: 'row', gap: 10, marginTop: 15}}>
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: 'white',
+                        paddingHorizontal: 10,
+                        paddingVertical: 5,
+                        borderRadius: 15,
+                      }}
+                      onPress={() => {
+                        navigation.navigate(`${item.name}`);
+                      }}>
+                      <Text style={{color: '#FFA800'}}>watch now</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: 'white',
+                        paddingHorizontal: 10,
+                        paddingVertical: 5,
+                        borderRadius: 15,
+                      }}
+                      onPress={() => {
+                        navigation.navigate('Subscription');
+                      }}>
+                      <Text style={{color: '#FFA800'}}>subscribe</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                <View
+                  style={{
+                    height: 100,
+                    width: 120,
+                    alignItems: 'center',
+                    //   backgroundColor: 'white',
+                    marginTop: 15,
+                  }}>
+                  <Image
+                    source={item.image}
+                    style={{height: '100%', width: '100%'}}
+                  />
                 </View>
               </View>
-              <View
-                style={{
-                  height: 100,
-                  width: 120,
-                  alignItems: 'center',
-                  //   backgroundColor: 'white',
-                  marginTop: 15,
-                }}>
-                <Image
-                  source={item.image}
-                  style={{height: '100%', width: '100%'}}
-                />
-              </View>
-            </View>
-          ))}
+            ))}
+          </View>
         </View>
-      </View>
-      {/* consultant  */}
-      <View style={styles.categoryContainer}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
-            CONSULTANT
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={{fontSize: 16, color: '#FFA800'}}>View All</Text>
-            <MaterialIcons name="navigate-next" size={25} color={'#FFA800'} />
+        {/* consultant  */}
+        <View style={styles.categoryContainer}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
+              CONSULTANT
+            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{fontSize: 16, color: '#FFA800'}}>View All</Text>
+              <MaterialIcons name="navigate-next" size={25} color={'#FFA800'} />
+            </View>
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 10,
+              flexWrap: 'wrap',
+              width: '100%',
+              justifyContent: 'space-between',
+              // paddingLeft: 10,
+              marginTop: 20,
+              // backgroundColor: 'red',
+              marginBottom: 20,
+            }}>
+            {consultant.map((item, index) => (
+              <View
+                key={index}
+                style={{
+                  width: '100%',
+                  // flexDirection: 'row',
+                  // justifyContent: '',
+                  backgroundColor: '#ffe6c6',
+                  borderRadius: 12,
+                  // padding: 10,
+                }}>
+                <View
+                  style={{
+                    height: 220,
+                    width: '100%',
+                    alignItems: 'center',
+                    //   backgroundColor: 'white',
+                    marginTop: 15,
+                    padding: 20,
+                  }}>
+                  <Image
+                    source={item.image}
+                    style={{height: '100%', width: '100%', borderRadius: 16}}
+                  />
+                </View>
+                <View style={{padding: 20}}>
+                  <Text
+                    style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
+                    {item.title}
+                  </Text>
+                  <Text style={{color: 'black'}}>{item.desc}</Text>
+                  <View style={{flexDirection: 'row', gap: 10, marginTop: 15}}>
+                    <TouchableOpacity
+                      style={{
+                        flexDirection: 'row',
+                        gap: 10,
+                        alignItems: 'center',
+                      }}>
+                      <Icons.AntDesign name="play" color={'red'} size={18} />
+                      <Text style={{color: '#FFA800', fontSize: 16}}>
+                        Watch Video
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            ))}
           </View>
         </View>
 
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
-            flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'space-between',
-            // paddingLeft: 10,
-            marginTop: 20,
-            // backgroundColor: 'red',
-            marginBottom: 20,
-          }}>
-          {consultant.map((item, index) => (
-            <View
-              key={index}
-              style={{
-                width: '100%',
-                // flexDirection: 'row',
-                // justifyContent: '',
-                backgroundColor: '#ffe6c6',
-                borderRadius: 12,
-                // padding: 10,
-              }}>
+        {/* succes stories */}
+        <View style={styles.categoryContainer}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
+              SUCCESS STORIES
+            </Text>
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 10,
+              flexWrap: 'wrap',
+              width: '100%',
+              justifyContent: 'space-between',
+              // paddingLeft: 10,
+              marginTop: 20,
+              // backgroundColor: 'red',
+              marginBottom: 20,
+            }}>
+            {Success.map((item, index) => (
               <View
+                key={index}
                 style={{
-                  height: 220,
                   width: '100%',
-                  alignItems: 'center',
-                  //   backgroundColor: 'white',
-                  marginTop: 15,
-                  padding: 20,
+                  // flexDirection: 'row',
+                  // justifyContent: '',
+                  // backgroundColor: '#ffe6c6',
+                  borderRadius: 12,
+                  // padding: 10,
                 }}>
-                <Image
-                  source={item.image}
-                  style={{height: '100%', width: '100%', borderRadius: 16}}
-                />
-              </View>
-              <View style={{padding: 20}}>
-                <Text style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
-                  {item.title}
-                </Text>
-                <Text style={{color: 'black'}}>{item.desc}</Text>
-                <View style={{flexDirection: 'row', gap: 10, marginTop: 15}}>
-                  <TouchableOpacity
-                    style={{
-                      flexDirection: 'row',
-                      gap: 10,
-                      alignItems: 'center',
-                    }}>
-                    <Icons.AntDesign name="play" color={'red'} size={18} />
-                    <Text style={{color: '#FFA800', fontSize: 16}}>
-                      Watch Video
-                    </Text>
-                  </TouchableOpacity>
+                <View
+                  style={{
+                    height: 220,
+                    width: '100%',
+                    alignItems: 'center',
+                    //   backgroundColor: 'white',
+                    marginTop: 15,
+                    //   padding: 20,
+                  }}>
+                  <Image
+                    source={item.image}
+                    style={{height: '100%', width: '100%', borderRadius: 16}}
+                  />
+                </View>
+                <View style={{marginTop: 20}}>
+                  <Text
+                    style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
+                    {item.title}
+                  </Text>
+                  <Text style={{color: 'black'}}>{item.desc}</Text>
                 </View>
               </View>
-            </View>
-          ))}
+            ))}
+          </View>
         </View>
-      </View>
-
-      {/* succes stories */}
-      <View style={styles.categoryContainer}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
-            SUCCESS STORIES
-          </Text>
-        </View>
-
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
-            flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'space-between',
-            // paddingLeft: 10,
-            marginTop: 20,
-            // backgroundColor: 'red',
-            marginBottom: 20,
-          }}>
-          {Success.map((item, index) => (
-            <View
-              key={index}
-              style={{
-                width: '100%',
-                // flexDirection: 'row',
-                // justifyContent: '',
-                // backgroundColor: '#ffe6c6',
-                borderRadius: 12,
-                // padding: 10,
-              }}>
-              <View
-                style={{
-                  height: 220,
-                  width: '100%',
-                  alignItems: 'center',
-                  //   backgroundColor: 'white',
-                  marginTop: 15,
-                  //   padding: 20,
-                }}>
-                <Image
-                  source={item.image}
-                  style={{height: '100%', width: '100%', borderRadius: 16}}
-                />
-              </View>
-              <View style={{marginTop: 20}}>
-                <Text style={{fontSize: 20, fontWeight: '600', color: 'black'}}>
-                  {item.title}
-                </Text>
-                <Text style={{color: 'black'}}>{item.desc}</Text>
-              </View>
-            </View>
-          ))}
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
