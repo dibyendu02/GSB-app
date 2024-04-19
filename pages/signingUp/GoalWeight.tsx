@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import Icons from '../../Icons';
 
 const GoalWeight = () => {
   const navigation = useNavigation();
@@ -23,6 +24,14 @@ const GoalWeight = () => {
   };
   return (
     <View style={styles.container}>
+      <View style={{marginBottom: 10}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.subtitle}>Step 6 of 8</Text>
       <Text style={styles.title}>What's your goal weight?</Text>
 
@@ -45,6 +54,7 @@ const GoalWeight = () => {
             onChangeText={handleHeightChange}
             value={height}
             placeholder="60"
+            placeholderTextColor={'black'}
           />
           <Text style={styles.unit}>|</Text>
           <Text style={styles.unit}>{unit}</Text>

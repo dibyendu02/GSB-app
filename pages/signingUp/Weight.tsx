@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import Icons from '../../Icons';
 
 const Weight = () => {
   const navigation = useNavigation();
@@ -23,6 +24,14 @@ const Weight = () => {
   };
   return (
     <View style={styles.container}>
+      <View style={{marginBottom: 10}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.subtitle}>Step 5 of 8</Text>
       <Text style={styles.title}>What's your weight?</Text>
 
@@ -44,6 +53,7 @@ const Weight = () => {
             keyboardType="numeric"
             onChangeText={handleHeightChange}
             value={height}
+            placeholderTextColor={'black'}
             placeholder="60"
           />
           <Text style={styles.unit}>|</Text>

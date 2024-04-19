@@ -27,7 +27,7 @@ import {
 import SignUp from './pages/SignUp';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Verification from './pages/Verification';
+import Verification from './pages/signingUp/Verification';
 import Age from './pages/signingUp/Age';
 import Weight from './pages/signingUp/Weight';
 import GoalHeight from './pages/signingUp/GoalHeight';
@@ -45,6 +45,9 @@ import Services from './pages/Services';
 import Consultant from './pages/Consultant';
 import Supplement from './pages/Supplement';
 import Fitness from './pages/Fitness';
+import GetStarted from './pages/signingUp/GetStarted';
+import Goal from './pages/signingUp/Goal';
+import FirstForm from './pages/signingUp/FirstForm';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +61,17 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Verification" component={Verification} />
+        <Stack.Screen name="Age" component={Age} />
+        <Stack.Screen name="Weight" component={Weight} />
+        <Stack.Screen name="GoalHeight" component={GoalHeight} />
+        <Stack.Screen name="GoalWeight" component={GoalWeight} />
+        <Stack.Screen name="GetStarted" component={GetStarted} />
+        <Stack.Screen name="Goal" component={Goal} />
+        <Stack.Screen name="FirstForm" component={FirstForm} />
+
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Notification" component={Notification} />
@@ -72,15 +86,6 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Consultant" component={Consultant} />
         <Stack.Screen name="Supplement" component={Supplement} />
         <Stack.Screen name="Fitness" component={Fitness} />
-
-        <Stack.Screen name="Splash" component={Splash} />
-
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Verification" component={Verification} />
-        <Stack.Screen name="Age" component={Age} />
-        <Stack.Screen name="Weight" component={Weight} />
-        <Stack.Screen name="GoalHeight" component={GoalHeight} />
-        <Stack.Screen name="GoalWeight" component={GoalWeight} />
       </Stack.Navigator>
     </NavigationContainer>
   );

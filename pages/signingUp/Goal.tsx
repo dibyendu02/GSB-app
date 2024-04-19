@@ -1,4 +1,5 @@
 import {
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -8,6 +9,8 @@ import {
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Icons from '../../Icons';
+import weight from '../../assets/weightMachine.png';
+import mental from '../../assets/mentalHealth.png';
 
 const GoalHeight = () => {
   const navigation = useNavigation();
@@ -31,40 +34,85 @@ const GoalHeight = () => {
           }}>
           <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
         </TouchableOpacity>
+        {/* <Text style={styles.subtitle}>Step 7 of 8</Text> */}
+        <Text style={styles.title}>What's your goal?</Text>
+        <Text style={{color: 'black', fontSize: 16, marginVertical: 10}}>
+          you can change more than one. Don’t worry, you can always change it
+          later
+        </Text>
       </View>
-      <Text style={styles.subtitle}>Step 7 of 8</Text>
-      <Text style={styles.title}>What's your goal height?</Text>
 
-      <View style={styles.subcontainer}>
-        <TouchableOpacity
-          style={styles.toggleButton}
-          onPress={handleToggleUnit}>
-          <Text style={styles.toggleButtonText}>
-            {unit === 'feet' ? 'Feet' : 'cm'}
+      <View style={{flexDirection: 'column', gap: 40}}>
+        <View
+          style={{
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 10,
+          }}>
+          <Image source={weight} style={{width: 20, height: 20}} />
+          <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+            IBS Colitis & Crohn's
           </Text>
-          <Text style={styles.toggleButtonText}>
-            {unit === 'feet' ? 'cm' : 'Feet'}
-          </Text>
-        </TouchableOpacity>
-
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            onChangeText={handleHeightChange}
-            value={height}
-            placeholder="175"
-            placeholderTextColor={'black'}
+        </View>
+        <View
+          style={{
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 10,
+          }}>
+          <Icons.MaterialCommunityIcons
+            name="diabetes"
+            size={25}
+            color={'black'}
           />
-          <Text style={styles.unit}>|</Text>
-          <Text style={styles.unit}>{unit}</Text>
+          <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+            Diabetes
+          </Text>
+        </View>
+        <View
+          style={{
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 10,
+          }}>
+          <Image source={mental} style={{width: 22, height: 20}} />
+          <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+            Mental Depression
+          </Text>
+        </View>
+        <View
+          style={{
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 10,
+          }}>
+          <Icons.Feather name="shopping-bag" size={20} color={'black'} />
+          <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+            E-Commerce
+          </Text>
         </View>
       </View>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('GetStarted');
+          navigation.navigate('TabNavigator');
         }}>
         <Text style={styles.buttonText}>Next Step</Text>
       </TouchableOpacity>
@@ -78,6 +126,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    justifyContent: 'space-between',
   },
   subcontainer: {
     flex: 1,

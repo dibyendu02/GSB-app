@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import React, {useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import Icons from '../../Icons';
 
 const Verification = () => {
   const et1 = useRef<TextInput>(null);
@@ -17,6 +18,14 @@ const Verification = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.title}>Verify Account</Text>
       <Text style={styles.subtitle}>
         Verify your account by entering verification code we sent to

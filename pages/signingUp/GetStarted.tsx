@@ -1,4 +1,5 @@
 import {
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -7,22 +8,21 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import Test from '../../components/ScrollNumberInput';
-import ScrollNumberInput from '../../components/ScrollNumberInput';
 import Icons from '../../Icons';
+import image from '../../assets/getstarted.png';
 
-const Weight = () => {
+const GetStarted = () => {
   const navigation = useNavigation();
 
-  const [age, setAge] = useState<string>('18');
-  const [unit, setUnit] = useState<'kg' | 'lbs'>('kg');
+  const [height, setHeight] = useState<string>('');
+  const [unit, setUnit] = useState<'feet' | 'cm'>('feet');
 
   const handleToggleUnit = () => {
-    setUnit(unit === 'kg' ? 'lbs' : 'kg');
+    setUnit(unit === 'feet' ? 'cm' : 'feet');
   };
 
   const handleHeightChange = (text: string) => {
-    setAge(text);
+    setHeight(text);
   };
   return (
     <View style={styles.container}>
@@ -34,43 +34,52 @@ const Weight = () => {
           <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
         </TouchableOpacity>
       </View>
-      <Text style={styles.subtitle}>Step 4 of 8</Text>
-      <Text style={styles.title}>What's your Age?</Text>
 
-      <View style={styles.subcontainer}>
-        <ScrollNumberInput setAge={setAge} />
-
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            onChangeText={handleHeightChange}
-            value={age}
-            placeholderTextColor={'black'}
-            // placeholder={18}
-          />
-          <Text style={styles.unit}>|</Text>
-          <Text style={styles.unit}>Years</Text>
-        </View>
+      <View style={{flexDirection: 'column', alignItems: 'center'}}>
+        <Text style={styles.title}>Let's get started</Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: 'black',
+            paddingHorizontal: 30,
+            marginVertical: 10,
+            fontSize: 16,
+          }}>
+          The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+          below for those interested.
+        </Text>
+        <Image source={image} />
+        <Text
+          style={{
+            textAlign: 'center',
+            color: 'black',
+            paddingHorizontal: 30,
+            marginVertical: 10,
+            fontSize: 16,
+          }}>
+          Sculpt your ideal body, free your true self, transform your life.
+        </Text>
       </View>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Weight');
+          navigation.navigate('Goal');
         }}>
-        <Text style={styles.buttonText}>Next Step</Text>
+        <Text style={styles.buttonText}>GET STARTED</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default Weight;
+export default GetStarted;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   subcontainer: {
     flex: 1,
@@ -114,6 +123,7 @@ const styles = StyleSheet.create({
   toggleButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'black',
   },
   inputContainer: {
     flexDirection: 'row',

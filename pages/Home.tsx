@@ -113,6 +113,25 @@ const Home = () => {
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={{width: '100%', backgroundColor: 'white'}}>
+      <View
+        style={{
+          // backgroundColor: 'red',
+          flexDirection: 'row',
+          paddingHorizontal: 10,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <Icons.Entypo name="dots-three-vertical" size={20} color={'black'} />
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+          <Text style={{fontWeight: '500', color: 'black'}}>Hi, Name</Text>
+          <Icons.MaterialCommunityIcons
+            name="account"
+            size={30}
+            color={'black'}
+          />
+        </View>
+      </View>
       <View style={styles.heroContainer}>
         <View style={{width: '60%'}}>
           <Text style={{fontWeight: '600', color: 'black', fontSize: 18}}>
@@ -401,7 +420,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     padding: 10,
     marginLeft: 28,
-    marginTop: 120,
+    marginTop: 80,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
