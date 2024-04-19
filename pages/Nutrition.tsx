@@ -140,6 +140,13 @@ const Nutrition = () => {
             </View>
           ))}
         </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('TabNavigator');
+          }}>
+          <Text style={styles.buttonText}>Download PDF</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -151,5 +158,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  button: {
+    backgroundColor: '#F6AF24',
+    borderRadius: 5,
+    paddingVertical: 12,
+    // marginHorizontal: 20,
+    marginBottom: 40,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });

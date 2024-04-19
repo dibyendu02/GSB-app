@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingHorizontal: 10,
     paddingVertical: 7,
+    color: 'black',
   },
   infoText: {
     color: 'black',

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Image,
   ScrollView,
@@ -6,11 +7,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
 import Icons from '../Icons';
 import gsbLogo from '../assets/gsbtransparent.png';
-import {useNavigation} from '@react-navigation/native';
 import supplement from '../assets/supplement.png';
+import LinearGradient from 'react-native-linear-gradient';
 
 const CartData = [
   {
@@ -25,106 +25,44 @@ const CartData = [
   },
 ];
 
-const Cart = () => {
-  const navigation = useNavigation();
-
+const Cart = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: 10,
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}>
+    <LinearGradient
+      colors={['white', '#FFA800']}
+      locations={[0.95, 1]}
+      start={{x: 0.5, y: 0}}
+      end={{x: 0.5, y: 1}}
+      style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
         </TouchableOpacity>
-        <Text style={{fontSize: 20, color: 'black', fontWeight: '800'}}>
-          Cart
-        </Text>
+        <Text style={styles.headerText}>Cart</Text>
         <Image source={gsbLogo} />
       </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{paddingHorizontal: 20}}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 20,
-            flexWrap: 'wrap',
-            width: '100%',
-            justifyContent: 'space-between',
-            // paddingLeft: 10,
-            marginTop: 20,
-            // backgroundColor: 'red',
-            marginBottom: 20,
-          }}>
-          {CartData.map((item, index) => (
-            <View
-              key={index}
-              style={{
-                width: '100%',
-                flexDirection: 'row',
-                backgroundColor: 'white',
-                borderRadius: 12,
-                borderWidth: 1,
-                borderColor: '#FFA800',
-                padding: 10,
-                elevation: 15, // Increase elevation for thicker shadow
-                shadowColor: '#FFA800', // Shadow color
-                shadowOffset: {
-                  width: 0,
-                  height: 10, // Increase height for thicker shadow
-                },
-                shadowOpacity: 0.5,
-                shadowRadius: 10, // Increase radius for thicker shadow
-                marginBottom: 20,
-              }}>
-              <View
-                style={{
-                  height: 120,
-                  width: '30%',
-                  alignItems: 'center',
-                  //   backgroundColor: 'white',
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  borderColor: '#FFA800',
-                  // marginTop: 15,
-                  paddingHorizontal: 10,
-                }}>
-                <Image
-                  source={item.image}
-                  style={{height: '100%', width: '100%', borderRadius: 18}}
-                />
-              </View>
-              <View style={{padding: 10, width: '80%'}}>
-                <Text style={{fontSize: 18, fontWeight: '400', color: 'black'}}>
-                  {item.title}
-                </Text>
-                <Text style={{color: 'black', fontWeight: '600'}}>
-                  INR {item.price}.00
-                </Text>
-                <TouchableOpacity
-                  style={{
-                    marginTop: 10,
-                    flexDirection: 'row',
-                    gap: 10,
-                    alignItems: 'center',
-                    width: 70,
-                    // backgroundColor: 'black',
-                  }}>
+        style={{paddingHorizontal: 20, marginBottom: 20}}>
+        {CartData.map((item, index) => (
+          <View key={index} style={styles.itemContainer}>
+            <View style={styles.imageContainer}>
+              <Image source={item.image} style={styles.itemImage} />
+            </View>
+            <View style={styles.itemDetails}>
+              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemPrice}>INR {item.price}.00</Text>
+
+              <View style={styles.quantityContainer}>
+                <TouchableOpacity style={styles.quantityButton}>
                   <Icons.AntDesign
                     name="upcircleo"
                     color={'#FFA800'}
                     size={18}
                   />
-                  <Text style={{color: '#FFA800', fontSize: 16}}>1</Text>
+                </TouchableOpacity>
+                <Text style={styles.quantityText}>1</Text>
+                <TouchableOpacity style={styles.quantityButton}>
                   <Icons.AntDesign
                     name="downcircleo"
                     color={'#FFA800'}
@@ -132,78 +70,44 @@ const Cart = () => {
                   />
                 </TouchableOpacity>
               </View>
+              <View
+                style={{
+                  // backgroundColor: 'red',
+                  flexDirection: 'row',
+                  justifyContent: 'flex-end',
+                }}>
+                <TouchableOpacity>
+                  <Icons.MaterialCommunityIcons
+                    name="delete-outline"
+                    size={25}
+                    color={'red'}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
-          ))}
-        </View>
-        <View
-          style={{
-            borderRadius: 12,
-            borderWidth: 1,
-            borderColor: '#FFA800',
-            height: 120,
-            padding: 12,
-            marginBottom: 20,
-          }}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{color: 'black', fontSize: 16, fontWeight: '600'}}>
-              Delivery Address
-            </Text>
+          </View>
+        ))}
+        <View style={styles.infoContainer}>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoTitle}>Delivery Address</Text>
             <Icons.AntDesign name="right" size={16} color={'black'} />
           </View>
         </View>
-        <View
-          style={{
-            borderRadius: 12,
-            borderWidth: 1,
-            borderColor: '#FFA800',
-            height: 120,
-            padding: 12,
-          }}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{color: 'black', fontSize: 16, fontWeight: '600'}}>
-              Payment Method
-            </Text>
+        <View style={styles.infoContainer}>
+          <View style={styles.infoItem}>
+            <Text style={styles.infoTitle}>Payment Method</Text>
             <Icons.AntDesign name="right" size={16} color={'black'} />
           </View>
         </View>
-        <View style={{marginTop: 20}}>
-          <Text style={{color: 'black', fontSize: 16, fontWeight: '600'}}>
-            Order Info
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={{color: 'gray'}}>Subtotal</Text>
-            <Text style={{color: 'black'}}>INR 1800</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={{color: 'gray'}}>Shipping Cost</Text>
-            <Text style={{color: 'black'}}>INR 0</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={{color: 'gray'}}>Total</Text>
-            <Text style={{color: 'black'}}>INR 1800</Text>
-          </View>
-        </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate('PaymentMethod');
-          }}>
-          <Text style={styles.buttonText}>CHECKOUT</Text>
-        </TouchableOpacity>
       </ScrollView>
-    </View>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('PaymentMethod');
+        }}>
+        <Text style={styles.buttonText}>CHECK OUT</Text>
+      </TouchableOpacity>
+    </LinearGradient>
   );
 };
 
@@ -212,19 +116,106 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    paddingHorizontal: 16,
+  },
+  headerText: {
+    fontSize: 20,
+    color: 'black',
+    fontWeight: '800',
+  },
+  itemContainer: {
+    flexDirection: 'row',
     backgroundColor: 'white',
-    // marginBottom: 40,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#FFA800',
+    padding: 10,
+    elevation: 15,
+    shadowColor: '#FFA800',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    marginBottom: 20,
+  },
+  imageContainer: {
+    height: 120,
+    width: '30%',
+    alignItems: 'center',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#FFA800',
+    paddingHorizontal: 10,
+  },
+  itemImage: {
+    height: '100%',
+    width: '100%',
+    borderRadius: 18,
+  },
+  itemDetails: {
+    padding: 10,
+    width: '70%',
+  },
+  itemTitle: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: 'black',
+  },
+  itemPrice: {
+    color: 'black',
+    fontWeight: '600',
+  },
+  quantityContainer: {
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 80,
+    gap: 5,
+  },
+  quantityButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  quantityText: {
+    color: '#FFA800',
+    fontSize: 16,
+  },
+  infoContainer: {
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#FFA800',
+    height: 120,
+    padding: 12,
+    marginBottom: 20,
+  },
+  infoItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  infoTitle: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: '600',
   },
   button: {
     backgroundColor: '#F6AF24',
     borderRadius: 5,
     paddingVertical: 12,
-    marginVertical: 20,
+    marginHorizontal: 20,
+    marginBottom: 40,
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 15,
+    fontWeight: '600',
     textAlign: 'center',
   },
 });
