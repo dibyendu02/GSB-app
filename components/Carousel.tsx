@@ -16,6 +16,8 @@ import logo from '../assets/gsb.png';
 const Carousel = () => {
   const flatlistRef = useRef<FlatList<any>>(null);
   const screenWidth = Dimensions.get('window').width;
+  const screenHeight = Dimensions.get('window').height;
+  const carouselHeight = screenHeight * 0.6;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -59,7 +61,10 @@ const Carousel = () => {
   const renderItem = ({item}: {item: any}) => {
     return (
       <View>
-        <Image source={item.image} style={{height: 500, width: screenWidth}} />
+        <Image
+          source={item.image}
+          style={{height: carouselHeight, width: screenWidth}}
+        />
         <LinearGradient
           colors={['transparent', 'rgba(255, 170, 0, 1.0)']}
           style={styles.gradientOverlay}
@@ -186,6 +191,6 @@ const styles = StyleSheet.create({
     top: 10,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    right: 10
+    right: 10,
   },
 });

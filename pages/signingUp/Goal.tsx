@@ -43,7 +43,10 @@ const GoalHeight = () => {
       </View>
 
       <View style={{flexDirection: 'column', gap: 40}}>
-        <View
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('FirstForm');
+          }}
           style={{
             borderColor: 'black',
             borderWidth: 1,
@@ -57,8 +60,11 @@ const GoalHeight = () => {
           <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
             IBS Colitis & Crohn's
           </Text>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('FirstForm');
+          }}
           style={{
             borderColor: 'black',
             borderWidth: 1,
@@ -76,8 +82,11 @@ const GoalHeight = () => {
           <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
             Diabetes
           </Text>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('FirstForm');
+          }}
           style={{
             borderColor: 'black',
             borderWidth: 1,
@@ -91,8 +100,11 @@ const GoalHeight = () => {
           <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
             Mental Depression
           </Text>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('TabNavigator');
+          }}
           style={{
             borderColor: 'black',
             borderWidth: 1,
@@ -106,13 +118,13 @@ const GoalHeight = () => {
           <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
             E-Commerce
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('FirstForm');
+          navigation.navigate('TabNavigator');
         }}>
         <Text style={styles.buttonText}>Next Step</Text>
       </TouchableOpacity>

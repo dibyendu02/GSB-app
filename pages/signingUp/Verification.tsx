@@ -88,7 +88,7 @@ const Verification = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate('Age');
+          navigation.navigate('Name');
         }}>
         <Text style={styles.buttonText}>Verify</Text>
       </TouchableOpacity>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -25,7 +26,10 @@ const CartData = [
   },
 ];
 
-const Cart = ({navigation}) => {
+const Cart = ({navigation}: {navigation: any}) => {
+  const [receiverName, setReceiverName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
   return (
     <LinearGradient
       colors={['white', '#FFA800']}
@@ -72,7 +76,6 @@ const Cart = ({navigation}) => {
               </View>
               <View
                 style={{
-                  // backgroundColor: 'red',
                   flexDirection: 'row',
                   justifyContent: 'flex-end',
                 }}>
@@ -95,9 +98,26 @@ const Cart = ({navigation}) => {
         </View>
         <View style={styles.infoContainer}>
           <View style={styles.infoItem}>
-            <Text style={styles.infoTitle}>Payment Method</Text>
+            <Text style={styles.infoTitle}>Receiver Information</Text>
             <Icons.AntDesign name="right" size={16} color={'black'} />
           </View>
+          {/* Add name input field */}
+          <TextInput
+            style={styles.input}
+            placeholder="Receiver's Name"
+            value={receiverName}
+            onChangeText={setReceiverName}
+            placeholderTextColor={'black'}
+          />
+          {/* Add phone number input field */}
+          <TextInput
+            style={styles.input}
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            placeholderTextColor={'black'}
+            keyboardType="phone-pad"
+          />
         </View>
       </ScrollView>
       <TouchableOpacity
@@ -192,9 +212,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#FFA800',
-    height: 120,
     padding: 12,
     marginBottom: 20,
+    minHeight: 120, // Set a minimum height to prevent overflow
   },
   infoItem: {
     flexDirection: 'row',
@@ -217,5 +237,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    color: 'black',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    marginTop: 10,
   },
 });

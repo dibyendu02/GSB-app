@@ -52,6 +52,7 @@ import Subscription from './pages/Subscription';
 import PaymentMethod from './pages/payment/PaymentMethod';
 import PaymentOtp from './pages/payment/PaymentOtp';
 import PaymentSuccess from './pages/payment/PaymentSuccess';
+import Name from './pages/signingUp/Name';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Verification" component={Verification} />
+        <Stack.Screen name="Name" component={Name} />
         <Stack.Screen name="Age" component={Age} />
         <Stack.Screen name="Weight" component={Weight} />
         <Stack.Screen name="GoalHeight" component={GoalHeight} />

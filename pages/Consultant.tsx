@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -33,6 +34,8 @@ const Consultant = () => {
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log('Form submitted!', formData);
+    alert('We will get back to you soon');
+    navigation.goBack();
   };
 
   return (

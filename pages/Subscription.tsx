@@ -135,6 +135,9 @@ const Subscription = () => {
               </View>
 
               <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('PaymentMethod');
+                }}
                 style={{
                   marginTop: 10,
                   backgroundColor: '#FFA800',
