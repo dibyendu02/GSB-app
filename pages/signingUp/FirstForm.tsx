@@ -1,25 +1,26 @@
+import React, {useState} from 'react';
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
+  Image,
 } from 'react-native';
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import Icons from '../../Icons';
 import gsbLogo from '../../assets/gsbtransparent.png';
-import {useNavigation} from '@react-navigation/native';
-import service from '../../assets/service.png';
 
 const ServiceData = [
   {
     question: 'Do you have IBS?',
     answers: ['Yes', 'No'],
+    singleChoice: true,
   },
   {
     question: 'Which Type Of IBS You Have?',
     answers: ['IBS-C', 'IBS-B', 'IBS-M'],
+    singleChoice: false,
   },
   {
     question: 'What Are Your Symptoms?',
@@ -36,18 +37,22 @@ const ServiceData = [
       'Disrub sleeping pattern',
       'Weight loss',
     ],
+    singleChoice: false,
   },
   {
     question: 'How is the environment of your family?',
     answers: ['Stressfull', 'Happy', 'All of Them'],
+    singleChoice: true,
   },
   {
     question: 'How long have you had this problem?',
     answers: ['6-12 Month', 'More than 1 Year', 'More than 5 Year', 'Other'],
+    singleChoice: true,
   },
   {
     question: 'Have you taken any treatment have you taken ?',
     answers: ['Allopathy', 'Homeopathic', 'Ayurvedic', 'All'],
+    singleChoice: false,
   },
   {
     question: 'Which type of test have you taken?',
@@ -61,39 +66,62 @@ const ServiceData = [
       'KFT',
       'Lipid profile',
     ],
+    singleChoice: false,
   },
   {
     question: 'How is your lifestyle?',
     answers: ['Alcohol', 'Smoking', 'Bad foods habit', 'All'],
+    singleChoice: false,
   },
 ];
 
 const FirstForm = () => {
   const navigation = useNavigation();
   const [selectedAnswers, setSelectedAnswers] = useState(
-    Array(ServiceData.length).fill(-1),
-  ); // Initialize with -1 indicating no selection
+    Array.from({length: ServiceData.length}, () => new Set()),
+  );
+
+  // const handleAnswerSelect = (questionIndex, answerIndex) => {
+  //   const newSelectedAnswers = [...selectedAnswers];
+  //   const selectedSet = new Set(selectedAnswers[questionIndex]);
+  //   if (selectedSet.has(answerIndex)) {
+  //     selectedSet.delete(answerIndex);
+  //   } else {
+  //     selectedSet.add(answerIndex);
+  //   }
+  //   newSelectedAnswers[questionIndex] = selectedSet;
+  //   setSelectedAnswers(newSelectedAnswers);
+  // };
+
+  const handleSingleChoiceSelect = (questionIndex, answerIndex) => {
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers[questionIndex] = new Set([answerIndex]);
+    setSelectedAnswers(newSelectedAnswers);
+  };
+
+  const handleMultipleChoiceSelect = (questionIndex, answerIndex) => {
+    const newSelectedAnswers = [...selectedAnswers];
+    const selectedSet = newSelectedAnswers[questionIndex];
+    if (selectedSet.has(answerIndex)) {
+      selectedSet.delete(answerIndex);
+    } else {
+      selectedSet.add(answerIndex);
+    }
+    setSelectedAnswers(newSelectedAnswers);
+  };
 
   const handleAnswerSelect = (questionIndex, answerIndex) => {
-    const newSelectedAnswers = [...selectedAnswers];
-    newSelectedAnswers[questionIndex] = answerIndex;
-    setSelectedAnswers(newSelectedAnswers);
+    if (ServiceData[questionIndex].singleChoice) {
+      handleSingleChoiceSelect(questionIndex, answerIndex);
+    } else {
+      handleMultipleChoiceSelect(questionIndex, answerIndex);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: 10,
-          paddingHorizontal: 16,
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
         </TouchableOpacity>
         <Image source={gsbLogo} />
@@ -104,7 +132,10 @@ const FirstForm = () => {
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{paddingHorizontal: 20, marginBottom: 20}}>
+        style={{
+          paddingHorizontal: 20,
+          marginBottom: 20,
+        }}>
         {ServiceData.map((item, index) => (
           <View key={index} style={styles.questionContainer}>
             <Text style={styles.question}>{item.question}</Text>
@@ -114,6 +145,7 @@ const FirstForm = () => {
                 borderWidth: 1,
                 borderColor: '#FFA800',
                 padding: 10,
+                // backgroundColor: 'red',
               }}>
               {item.answers.map((answer, i) => (
                 <TouchableOpacity
@@ -124,10 +156,9 @@ const FirstForm = () => {
                     style={[
                       styles.checkbox,
                       {
-                        backgroundColor:
-                          selectedAnswers[index] === i
-                            ? '#F6AF24'
-                            : 'transparent',
+                        backgroundColor: selectedAnswers[index].has(i)
+                          ? '#F6AF24'
+                          : 'transparent',
                       },
                     ]}
                   />
@@ -146,6 +177,7 @@ const FirstForm = () => {
             padding: 16,
             alignItems: 'center',
             borderRadius: 12,
+            marginBottom: 20,
           }}>
           <Text style={{color: 'white', fontWeight: '600', fontSize: 16}}>
             SUMBIT
@@ -163,6 +195,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    paddingHorizontal: 16,
+  },
   questionContainer: {
     marginBottom: 20,
   },
@@ -172,10 +211,22 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: 'gray',
   },
+  answerContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
   answer: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    // margin: 4,
+    borderRadius: 20,
+    // borderWidth: 1,
+    // borderColor: '#ccc',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+  },
+  selectedAnswer: {
+    backgroundColor: '#F6AF24',
   },
   checkbox: {
     width: 20,

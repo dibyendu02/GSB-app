@@ -69,7 +69,7 @@ const Nutrition = () => {
           <Icons.AntDesign name="arrowleft" size={25} color={'black'} />
         </TouchableOpacity>
         <Text style={{fontSize: 20, color: 'black', fontWeight: '800'}}>
-          Nutrition
+          Diet
         </Text>
         <Image source={gsbLogo} />
       </View>
@@ -102,19 +102,25 @@ const Nutrition = () => {
               }}>
               <View
                 style={{
-                  height: 120,
-                  width: 180,
-                  alignItems: 'center',
+                  // alignItems: 'center',
                   //   backgroundColor: 'white',
                   marginTop: 15,
                   paddingHorizontal: 10,
+                  flexDirection: 'row',
+                  width: '20%',
+                  justifyContent: 'center',
                 }}>
-                <Image
+                {/* <Image
                   source={item.image}
                   style={{height: '100%', width: '100%', borderRadius: 18}}
+                /> */}
+                <Icons.FontAwesome
+                  name="file-pdf-o"
+                  color={'black'}
+                  size={35}
                 />
               </View>
-              <View style={{padding: 10, width: '50%'}}>
+              <View style={{padding: 10, width: '80%'}}>
                 <Text style={{fontSize: 18, fontWeight: '600', color: 'black'}}>
                   {item.title}
                 </Text>
@@ -126,14 +132,14 @@ const Nutrition = () => {
                     gap: 10,
                     alignItems: 'center',
                   }}>
-                  <Icons.Feather
-                    name="play-circle"
+                  <Icons.AntDesign
+                    name="download"
                     color={'#FFA800'}
                     size={18}
                   />
 
                   <Text style={{color: '#FFA800', fontSize: 16}}>
-                    Watch Video
+                    Download pdf
                   </Text>
                 </TouchableOpacity>
               </View>

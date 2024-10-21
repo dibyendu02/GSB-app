@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Video from 'react-native-video'; // Import the Video component
-import splashVideo from '../assets/splash.mp4';
+import splashVideo from '../assets/splash2.mp4';
 
 const Splash = () => {
   const navigation = useNavigation();
@@ -22,7 +22,7 @@ const Splash = () => {
         source={splashVideo} // Provide the source of your splash video
         resizeMode="cover"
         style={StyleSheet.absoluteFillObject} // Make the video fullscreen
-        onEnd={() => navigation.navigate('SignUp')} // Navigate to 'SignUp' screen when the video ends
+        onEnd={() => navigation.replace('SignUp')} // Navigate to 'SignUp' screen when the video ends
       />
     </View>
   );

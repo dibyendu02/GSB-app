@@ -53,6 +53,13 @@ import PaymentMethod from './pages/payment/PaymentMethod';
 import PaymentOtp from './pages/payment/PaymentOtp';
 import PaymentSuccess from './pages/payment/PaymentSuccess';
 import Name from './pages/signingUp/Name';
+import MyOrders from './pages/MyOrders';
+import MySubscription from './pages/MySubscription';
+import ProfileInfo from './pages/ProfileInfo';
+import SuccessStories from './pages/SuccessStories';
+import MySuccessStories from './pages/MySuccessStories';
+import AddMySuccessStoriy from './pages/AddMySuccessStory';
+import AddMySuccessStory from './pages/AddMySuccessStory';
 
 const Stack = createNativeStackNavigator();
 
@@ -86,8 +93,14 @@ function App(): React.JSX.Element {
 
         <Stack.Screen name="Meditation" component={Meditation} />
         <Stack.Screen name="Education" component={Education} />
-        <Stack.Screen name="Nutrition" component={Nutrition} />
+        <Stack.Screen name="Diet" component={Nutrition} />
         <Stack.Screen name="Subscription" component={Subscription} />
+        <Stack.Screen name="MySubscription" component={MySubscription} />
+        <Stack.Screen name="MyOrders" component={MyOrders} />
+        <Stack.Screen name="ProfileInfo" component={ProfileInfo} />
+        <Stack.Screen name="SuccessStories" component={SuccessStories} />
+        <Stack.Screen name="MySuccessStories" component={MySuccessStories} />
+        <Stack.Screen name="AddMySuccessStory" component={AddMySuccessStory} />
 
         <Stack.Screen name="Services" component={Services} />
         <Stack.Screen name="Consultant" component={Consultant} />

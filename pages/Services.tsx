@@ -61,6 +61,50 @@ const Services = () => {
         </Text> */}
       </View>
 
+      <View style={{marginLeft: 20}}>
+        <Text style={{color: 'black', fontWeight: '600', fontSize: 18}}>
+          GSBpathy Services
+        </Text>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          paddingHorizontal: 20,
+          justifyContent: 'space-between',
+          marginVertical: 20,
+        }}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#FFA800',
+            padding: 5,
+            paddingVertical: 10,
+            width: '45%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            borderRadius: 12,
+          }}>
+          <Icons.Ionicons name="call" size={20} />
+          <Text style={{fontWeight: '800', fontSize: 18}}>Call</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#FFA800',
+            padding: 5,
+            paddingVertical: 10,
+            width: '45%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            borderRadius: 12,
+          }}>
+          <Icons.Feather name="message-square" size={20} />
+          <Text style={{fontWeight: '800', fontSize: 18}}>Message</Text>
+        </TouchableOpacity>
+      </View>
+
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{paddingHorizontal: 20, marginBottom: 20}}>

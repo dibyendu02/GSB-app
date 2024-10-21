@@ -70,8 +70,8 @@ const Carousel = () => {
           style={styles.gradientOverlay}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.whiteText}>{item.topText}</Text>
-          <Text style={styles.blackText}>{item.bottomText}</Text>
+          <Text style={styles.blackText}>{item.topText}</Text>
+          <Text style={styles.goldenText}>{item.bottomText}</Text>
         </View>
       </View>
     );
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     bottom: 60,
     display: 'flex',
   },
-  whiteText: {
+  goldenText: {
     color: 'white',
     fontSize: 32,
     fontStyle: 'italic',

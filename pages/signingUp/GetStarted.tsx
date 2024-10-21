@@ -10,7 +10,7 @@ import {
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Icons from '../../Icons';
-import image from '../../assets/getstarted.png';
+import image from '../../assets/getstarted4.png';
 
 const GetStarted = () => {
   const navigation = useNavigation();

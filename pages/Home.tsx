@@ -74,7 +74,7 @@ const Innerpeace = [
     image: inner2,
   },
   {
-    name: 'Nutrition',
+    name: 'Diet',
     excerise: 14,
     time: 20,
     image: inner3,
@@ -116,19 +116,22 @@ const Home = () => {
           // backgroundColor: 'red',
           flexDirection: 'row',
           paddingHorizontal: 10,
-          justifyContent: 'space-between',
+          justifyContent: 'flex-end',
           alignItems: 'center',
           marginVertical: 10,
         }}>
-        <Icons.Entypo name="dots-three-vertical" size={20} color={'black'} />
-        <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ProfileInfo');
+          }}
+          style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
           <Text style={{fontWeight: '500', color: 'black'}}>Hi, Name</Text>
           <Icons.MaterialCommunityIcons
             name="account"
             size={30}
             color={'black'}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -247,7 +250,11 @@ const Home = () => {
                       onPress={() => {
                         navigation.navigate(`${item.name}`);
                       }}>
-                      <Text style={{color: '#FFA800'}}>watch now</Text>
+                      {item.name === 'Diet' ? (
+                        <Text style={{color: '#FFA800'}}>view more</Text>
+                      ) : (
+                        <Text style={{color: '#FFA800'}}>watch now</Text>
+                      )}
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
@@ -361,6 +368,14 @@ const Home = () => {
             <Text style={{fontSize: 20, fontWeight: '800', color: 'black'}}>
               SUCCESS STORIES
             </Text>
+            <TouchableOpacity
+              style={{flexDirection: 'row', alignItems: 'center', gap: 5}}
+              onPress={() => {
+                navigation.navigate('MySuccessStories');
+              }}>
+              <Text style={{color: '#FFA800'}}>View More</Text>
+              <Icons.Entypo name="chevron-right" color={'#FFA800'} size={20} />
+            </TouchableOpacity>
           </View>
 
           <View

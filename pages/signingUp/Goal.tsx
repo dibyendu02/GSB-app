@@ -25,6 +25,13 @@ const GoalHeight = () => {
   const handleHeightChange = (text: string) => {
     setHeight(text);
   };
+
+  const handleClearAndReplace = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'TabNavigator'}],
+    });
+  };
   return (
     <View style={styles.container}>
       <View style={{marginBottom: 10}}>
@@ -102,9 +109,7 @@ const GoalHeight = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('TabNavigator');
-          }}
+          onPress={handleClearAndReplace}
           style={{
             borderColor: 'black',
             borderWidth: 1,
@@ -121,11 +126,7 @@ const GoalHeight = () => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate('TabNavigator');
-        }}>
+      <TouchableOpacity style={styles.button} onPress={handleClearAndReplace}>
         <Text style={styles.buttonText}>Next Step</Text>
       </TouchableOpacity>
     </View>
